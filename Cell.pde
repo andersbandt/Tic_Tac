@@ -55,7 +55,7 @@ public class Cell {
 
   public void display() {
     stroke(255);
-    fill(255, 255, 0);
+    fill(0,255,173);
     rect(x,y,w,h); 
     if (state == 1 ){ // makes an 0
        ellipseMode(CORNER);
