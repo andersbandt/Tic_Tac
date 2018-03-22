@@ -7,6 +7,8 @@ private int count1 = 0;
 private int count2 = 0;
 private boolean show1 = false;
 private boolean show2 = false;
+private int win1 = 0;
+private int win2 = 0;
 
 
 public void settings(){
@@ -24,13 +26,20 @@ public void draw() {
   playBoard.display(); //displays the board
   reset.display(); //displays the reset button
   fill(0,0,0);
+  fill(20,20,20);
+  textSize(14);
+  text("Player 1:" + win1, 100, 100);
+  textSize(14);
+  text("Player 2:" + win2, 300, 100);
   if (show1) {
     reset.player1();
     reset.newGame();
+    win1++;
   }
   else if (show2) {
     reset.player2();
     reset.newGame();
+    win2++;
 }
 if (tie()) {
   reset.tie();
