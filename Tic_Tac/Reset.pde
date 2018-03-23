@@ -3,6 +3,8 @@ public class Reset {
   private int yLoc = 500;
   private int xHeight = 100;
   private int yHeight = 50;
+  private int win1 = 0;
+  private int win2 = 0;
   
   public Reset() {
   }
@@ -13,17 +15,22 @@ public class Reset {
     fill(255,89,194);
     textSize(28);
     text("RESET", xLoc+10, yLoc+35);
+    fill(0,0,0);
+    textSize(14);
+    text("O's:" + win1 + " wins", 100, 100);
+    text("X's:" + win2 + " wins", 400, 100);
     
   }
   
   public void player1() {
     textSize(28);
-    text("Player 1 Wins!", 200, 100);
+    text("O's win!!!", 227, 100);
   }
   
   public void player2() {
     textSize(28);
-    text("Player 2 Wins!", 200, 100);
+    text("X's win!!!", 227, 100);
+  
 }
 
  public void newGame() {
@@ -36,7 +43,7 @@ public class Reset {
  
  public void tie() {
    textSize(28);
-    text("It's a draw", 200, 100);
+    text("It's a draw", 220, 100);
  }
    
   

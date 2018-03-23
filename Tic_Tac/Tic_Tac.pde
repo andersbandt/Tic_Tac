@@ -7,8 +7,11 @@ private int count1 = 0;
 private int count2 = 0;
 private boolean show1 = false;
 private boolean show2 = false;
-private int win1 = 0;
-private int win2 = 0;
+private boolean execute1 = false;
+private boolean execute2 = false;
+
+
+
 
 
 public void settings(){
@@ -27,21 +30,25 @@ public void draw() {
   reset.display(); //displays the reset button
   fill(0,0,0);
   fill(20,20,20);
-  textSize(14);
-  text("Player 1:" + win1, 100, 100);
-  textSize(14);
-  text("Player 2:" + win2, 300, 100);
+  
+ 
   if (show1) {
     reset.player1();
     reset.newGame();
-    win1++;
+    if (execute1) {
+      reset.win1++;
+      execute1 = false;
+    }
   }
   else if (show2) {
     reset.player2();
     reset.newGame();
-    win2++;
+    if (execute2) {
+      reset.win2++;
+      execute2 = false;
+    }
 }
-if (tie()) {
+if (tie() && (show1 == false && show2 ==false)) {
   reset.tie();
 }
 }
@@ -53,7 +60,8 @@ void mousePressed(){
     for (int j = 0; j < playBoard.getCols(); j++) { //click function on them
       playBoard.getBoard()[i][j].click(mouseX, mouseY);
     }
-  } 
+  }
+  check();
   }
   
   if (mouseX > 250 && mouseX < 350) { //checks the mouse position in the x direction
@@ -68,8 +76,7 @@ void mousePressed(){
   show2 = false;
   }
   
-  check(); //runs the check method each time
-  
+
 } //end of mousePressed method
 
 
@@ -87,12 +94,12 @@ public void check() { //method to check if there is a winner
       }
       
       if (count1 == 3) {
-        print("Player 1 wins");
         show1 = true;
+        execute1 = true;
       }
       else if (count2 == 3) {
-        print("Player 2 wins");
         show2 = true;
+        execute2 = true;
       }
     }
      
@@ -111,12 +118,12 @@ public void check() { //method to check if there is a winner
       }
       
       if (count1 == 3) {
-        print("Player 1 winz");
         show1 = true;
+        execute1 = true;
       }
       else if (count2 == 3) {
-        print("Player 2 winz");
         show2 = true;
+        execute2 = true;
       }
     }
     
@@ -132,12 +139,12 @@ public void check() { //method to check if there is a winner
       }
       
       if (count1 == 3) {
-        print("Player 1 winx");
         show1 = true;
+        execute1 = true;
       }
       else if (count2 == 3) {
-        print("Player 2 winx");
         show2 = true;
+        execute2 = true;
       }
     }
     
@@ -153,16 +160,14 @@ public void check() { //method to check if there is a winner
       }
       
       if (count1 == 3) {
-        print("Player 1 winv");
         show1 = true;
+        execute1 = true;
       }
       else if (count2 == 3) {
-        print("Player 2 winv");
         show2 = true;
+        execute2 = true;
       }
     }
-     
-  
   }
   
 } //close of the check method
@@ -179,6 +184,8 @@ public boolean tie() {
   }
   return true;
 }//end of tie method
+
+
   
   
   

@@ -1,7 +1,5 @@
 
 public class Board{
- private float xLoc;
- private float yLoc;
  private float cellSize;
  private int rows;
  private int cols;
@@ -10,8 +8,6 @@ public class Board{
  private Cell[][] theBoard;
  
  public Board(){
-   xLoc = 0;
-   yLoc = 0;
    cellSize = 50; 
    rows = cols = 3;
    theBoard = new Cell[rows][cols];  //initializes the board
@@ -25,8 +21,6 @@ public class Board{
  // In your parameterized constructor, set the location of the board 
  // so it is not always in the top left corner.
   public Board(float xLoc, float yLoc){
-   this.xLoc = xLoc;
-   this.yLoc = yLoc;
    cellSize = 75; 
    rows = cols = 3;
    theBoard = new Cell[rows][cols];  //initializes the board
